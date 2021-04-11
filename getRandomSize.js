@@ -1,0 +1,1 @@
+exports.getRandomSize = () => Math.round(Math.random() * 10);
