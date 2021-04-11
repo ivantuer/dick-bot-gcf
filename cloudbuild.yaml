@@ -17,6 +17,5 @@ steps:
   - deploy
   - telegramBotWebhook
   - --region=europe-west1
-  - --source=.
   - --trigger-http
 timeout: "1600s"
