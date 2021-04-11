@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Telegraf } = require("telegraf");
 const { roll, top, me } = require("./user");
 

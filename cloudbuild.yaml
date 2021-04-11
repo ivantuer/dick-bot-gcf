@@ -1,0 +1,22 @@
+steps:
+- name: node:14.15.5
+  entrypoint: npm
+  args: ["install"]
+- name: node:14.15.5
+  entrypoint: npm
+  args: ["run", "create-env"]
+  env:
+    - 'GOOGLE_CLOUD_PROJECT_ID=${_GOOGLE_CLOUD_PROJECT_ID}'
+    - 'TELEGRAM_BOT_TOKEN=${_TELEGRAM_BOT_TOKEN}'
+    - 'GOOGLE_CLOUD_REGION=${_GOOGLE_CLOUD_REGION}'
+    - 'MONGO_URI=${_MONGO_URI}'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - telegramBotWebhook
+  - --region=europe-west1
+  - --source=.
+  - --trigger-http
+timeout: "1600s"
