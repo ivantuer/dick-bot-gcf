@@ -31,7 +31,7 @@ exports.roll = async (ctx) => {
     return;
   }
 
-  if (new Date(user.updatedAt).getTime() > new Date().setHours(0, 0, 0, 0)) {
+  if (new Date(user.updatedAt).getTime() > new Date().setHours(3, 0, 0, 0)) {
     ctx.telegram.sendMessage(
       userData.chatId,
       `Твій михайло-молодший сьогодні вже качався!`
