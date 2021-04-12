@@ -153,7 +153,10 @@ exports.sex = async (ctx) => {
   ]).toArray();
 
   const sexTodayCouple = await SexModel.findOne({
-    updatedAt: { $gte: new Date(new Date().setHours(3, 0, 0, 0)) },
+    updatedAt: {
+      $gte: new Date(new Date().setHours(3, 0, 0, 0)),
+      chatId: userData.chatId,
+    },
   });
 
   if (!activeUser) {
@@ -192,6 +195,7 @@ exports.sex = async (ctx) => {
       passiveUser,
       updatedAt: new Date(),
       count: getRandomSize(),
+      chatId: userData.chatId,
     });
 
     ctx.telegram.sendMessage(
