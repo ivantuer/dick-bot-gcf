@@ -155,8 +155,8 @@ exports.sex = async (ctx) => {
   const sexTodayCouple = await SexModel.findOne({
     updatedAt: {
       $gte: new Date(new Date().setHours(3, 0, 0, 0)),
-      chatId: userData.chatId,
     },
+    chatId: userData.chatId,
   });
 
   if (!activeUser) {
